@@ -74,6 +74,7 @@ class Requestd2p_model extends CI_Model {
         $this->db->from('tr_request');
         $this->db->join('m_status','tr_request.status_req = m_status.id_status');
         $this->db->join('tr_upload_file','tr_request.id_upload_file = tr_upload_file.id','left');
+        $this->db->join('t_admin','tr_request.name = t_admin.nama');
         $this->db->where('tr_request.id', $id);
         
         $query = $this->db->get();
@@ -238,3 +239,4 @@ class Requestd2p_model extends CI_Model {
     }
 
 }
+?>

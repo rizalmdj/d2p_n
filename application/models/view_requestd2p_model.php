@@ -35,12 +35,12 @@ class View_requestd2p_model extends CI_Model {
     public function approval_request_d2p($id,$status) {
        
         $data = array(
-            "status_req" => $status,
-            "update_date" => $this->input->post(NOW(),true)
+            "status_req" => $status
+           // "update_date" => date('Y-m-d H:i:s'),
         );
         $this->db->where('id', $id);
         $this->db->update('tr_request', $data);
-        echo print_r($id);
+       // echo print_r($id);
     } 
     
 // REJECT REQUEST D2P MODEL
@@ -117,3 +117,4 @@ class View_requestd2p_model extends CI_Model {
     }
     
 }
+?>

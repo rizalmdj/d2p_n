@@ -16,9 +16,7 @@
 	<div class="col-lg-6">		
 		<table width="200%" class="table-form">
 
-			<input type="hidden" name ="id" 
-
-				value="<?php echo $data[0]->id ?>">
+			
 
 					<tr><td width="35%">Name <span style="color:red;"></span></td><td><b><?php echo $data[0]->name ?></b></td></tr>
 

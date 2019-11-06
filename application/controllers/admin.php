@@ -47,6 +47,7 @@ class Admin extends CI_Controller {
                     'divisi' => $d_cek->id_divisi,
                     'departemen' => $d_cek->id_dep,
 					'admin_valid' => true,
+					'email' => $d_cek->email,
 					'status_pas' => $d_cek->status_pas
                     );
             //print_r(json_encode($data));
