@@ -221,7 +221,7 @@ class Request_d2p extends CI_Controller {
 
 	public function submit_request_d2p($id){
 		$this->requestd2p_model->submit_request_d2p($id);
-		$this->email_Send($id);
+		//$this->email_Send($id);
 		$this->session->set_flashdata("k", "<div class=\"alert alert-success\" id=\"alert\">Data has been submited</div>");
 		redirect('index.php/request_d2p/request_d2p_user_list');
 	}

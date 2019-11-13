@@ -17,6 +17,24 @@ class Requestd2p_model extends CI_Model {
     	}
     }
 
+
+//  VIEW GET ALL REQUEST D2P MODEL by Status
+
+    public function getAllRequestbyStatus($stat1, $stat2){
+        $this->db->select('*');
+        $this->db->from('tr_request');
+        $this->db->join('m_status', 'tr_request.status_req = m_status.id_status');
+        $this->db->order_by("created_date", "desc");
+        $this->db->where('status_req', $stat1 , 'OR' , $stat2);
+        
+        $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        } else {
+            return array();
+        }
+    }
+
 // GET  USER REQUEST D2P MODEL-------------------------------------------
 
     public function getUserRequest($id){

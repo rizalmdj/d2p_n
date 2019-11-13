@@ -120,15 +120,15 @@ class View_requestd2p extends CI_Controller {
 			$message = $mailContent1;
 			$message2 = $mailContent3;
 			$subject = 'D2P Request - '.$data[0]->project_name.'';
-			$this->emailSend($to,$message,$subject);
-			$this->emailSend($to2,$message2,$subject);
+			//$this->emailSend($to,$message,$subject);
+			//$this->emailSend($to2,$message2,$subject);
 			
 		}elseif($id_role == '4'){
 			$status = '5';
 			$to = $data[0]->email;
 			$message = $mailContent2;
 			$subject = 'D2P Request - APPROVAL'.$data[0]->project_name.'';
-			$this->emailSend($to,$message,$subject);
+			//$this->emailSend($to,$message,$subject);
 		}
 		$this->view_requestd2p_model->approval_request_d2p($id,$status);
 		
@@ -168,7 +168,7 @@ class View_requestd2p extends CI_Controller {
 		$to = $data[0]->email;
 		$message = $mailContent;
 		$subject = 'D2P Reject - '.$data[0]->project_name.'';
-		$this->emailSend($to,$message,$subject);
+		//$this->emailSend($to,$message,$subject);
 		$this->view_requestd2p_model->reject_request_d2p($id,$id_role);
 
 		redirect('index.php/view_requestd2p/view_requestd2p_list');
