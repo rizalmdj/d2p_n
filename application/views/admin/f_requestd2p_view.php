@@ -5,18 +5,18 @@
 		</div>
 	</div><!-- /.container -->
 </div><!-- /.navbar -->
-	<?php 
-	echo $this->session->flashdata("k");
+<?php 
+echo $this->session->flashdata("k");
 	$var = $this->session->userdata; //
 	?>
-	<form action="<?php echo base_URL(); ?>index.php/request_d2p/do_edit_requestd2p" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-		
-	<div class="row-fluid well" style="overflow: hidden">
 	
-	<div class="col-lg-6">		
-		<table width="200%" class="table-form">
+		
+		<div class="row-fluid well" style="overflow: hidden">
 
-			
+			<div class="col-lg-6">		
+				<table width="200%" class="table-form">
+
+
 
 					<tr><td width="35%">Name <span style="color:red;"></span></td><td><b><?php echo $data[0]->name ?></b></td></tr>
 
@@ -29,30 +29,78 @@
 					<tr><td width="35%">Notes </td><td><b><?php echo $data[0]->keterangan?></b></td></tr>			
 
 					<tr><td width="35%">Date  <span style="color:red;">*</span></td><td><b><?php echo $data[0]->req_date ?></b></td></tr>
-		
-			</td></tr>
-		</table>
 
-	</div>
+				</td></tr>
+			</table>
 
-	<div class="col-lg-6">	
+		</div>
 
-		<table width="200%" class="table-form">
+		<div class="col-lg-6">	
 
-			<input type="hidden" name ="id" 
+			<table width="200%" class="table-form">
+
+				<input type="hidden" name ="id" 
 
 				value="<?php echo $data[0]->id ?>">				
-					<tr><td width="35%">Dokumen SIT  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file1 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file1."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>			
-					<tr><td width="35%">Dokumen UAT  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file2 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file2."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
-					<tr><td width="35%">List Object  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file3 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file3."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
-					<tr><td width="35%">Deployment Guide  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file4 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file4."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
-					<tr><td width="35%">Rollback Plan  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file5 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file5."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
-					<tr><td width="35%">Release Notes  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file6 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file6."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
+				<tr><td width="35%">Dokumen SIT  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file1 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file1."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>			
+				<tr><td width="35%">Dokumen UAT  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file2 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file2."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
+				<tr><td width="35%">List Object  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file3 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file3."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
+				<tr><td width="35%">Deployment Guide  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file4 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file4."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
+				<tr><td width="35%">Rollback Plan  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file5 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file5."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
+				<tr><td width="35%">Release Notes  <span style="color:red;"></span></td><td><b><?php if($data[0]->upload_file6 != ""){echo "<a target='_blank' href='".base_url()."upload/".$data[0]->upload_file6."'>Download</a>";} else {echo "Data Tidak ada.";}?></b></td></tr></tr>	
 
-		</table>		
+			</table>		
 
-	</div>	
+		</div>	
 	</div>
-	</form>
+	<div class="row-fluid well" style="overflow: hidden">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>Coment</h3>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+			<div class="row">
+				<?php 
+		if (empty($coment)) {
+			echo "<tr><td colspan='4'  style='text-align: center; font-weight: bold'>--Data tidak ditemukan--</td></tr>";
+		} else {
+			foreach ($coment as $c) {
+		?>
+				<div class="col-sm-1">
+					<div class="thumbnail">
+						<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+					</div><!-- /thumbnail -->
+				</div><!-- /col-sm-1 -->
 
-						
+				<div class="col-sm-11">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong><?php echo $c->nama ?></strong> <span class="text-muted">commented <?php echo $c->date?></span>
+						</div>
+						<div class="panel-body">
+							<?php echo $c->conten?>
+						</div><!-- /panel-body -->
+					</div><!-- /panel panel-default -->
+				</div><!-- /col-sm-5 -->
+				<?php 
+			
+			}
+		}
+		?>
+			
+				<form action="<?php echo base_URL()?>index.php/request_d2p/send_coment/<?php echo $data[0]->id ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="comment">Comment:</label>
+					<input type="hidden" name="id" value="<?php echo $this->uri->segment(3); ?>"></input>
+					<textarea name="Coment" class="form-control" rows="5" id="comment"></textarea>
+					<br>
+					<button type="submit" class="btn btn-success green" style="margin-left: 94%;"><i class="fa fa-share"></i> Share</button>
+				</div>
+			</form>
+			</div><!-- /row -->
+
+		</div>
+	</div>
+
+

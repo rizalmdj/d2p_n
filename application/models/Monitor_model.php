@@ -2,6 +2,12 @@
 class Monitor_model extends CI_Model {
 
 
+public function __construct()
+    {
+        parent::__construct();
+    }
+    
+
 	function data(){
         $query = $this->db->query("SELECT DATE(req_date) as tanggal, COUNT(req_date) as 'jumlah_req' FROM tr_request GROUP BY DATE(req_date)");
         if($query->num_rows() > 0){

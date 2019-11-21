@@ -101,7 +101,38 @@ class Requestd2p_model extends CI_Model {
         } else {
             return array();
         }
-    }  
+    }
+// GET COMENT
+    public function getComent($id){
+        $query = $this->db->query("
+            SELECT * FROM tr_coment 
+            JOIN t_admin on tr_coment.id_t_admin = t_admin.id
+            WHERE tr_coment.id_tr_request = ".$id." ORDER BY `tr_coment`.`date` ASC
+
+            ");
+        
+        $row = $query->result();
+        // print_r($row);
+        // die();
+        return $row;
+    }
+
+// SEND COMENT
+    public function send_coment($data) {
+
+        $this->db->trans_start();
+        $this->db->insert('tr_coment', $data);        
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+            {
+                $this->db->trans_rollback();
+            }
+        else
+            {
+                $this->db->trans_commit();
+            }  
+    }
 
 // ADD REQUEST D2P MODEL    
 

@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['base_url']	  = "http://localhost/d2p_ilcsnew3/";
+$config['base_url']	  = "http://localhost/d2p_ilcsnew4/";
 $config['index_page']     = '';
 $config['uri_protocol']	  = 'AUTO';
 

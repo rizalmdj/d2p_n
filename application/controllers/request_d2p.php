@@ -135,8 +135,9 @@ class Request_d2p extends CI_Controller {
 	public function detail_request_d2p (){
 		$id					= $this->uri->segment(3);
 		$data['data'] = $this->requestd2p_model->getDetailRequestById($id);
+		$data['coment']= $this->requestd2p_model->getComent($id);
 		$data['page']		= "f_requestd2p_view";
-		//echo "<pre>"; print_r($data['data']); echo "</pre>";exit;	
+		//echo "<pre>"; print_r($data['coment']); echo "</pre>";exit;	
 		$data['request'] = $this->requestd2p_model->getAllEditRequest();
 		$this->load->view('admin/aaa', $data);
 	}
@@ -238,6 +239,21 @@ class Request_d2p extends CI_Controller {
 		$this->load->view('admin/aaa', $data);
 	}
 
+// send coment
+	public function send_coment (){
+		$rid					= $this->input->post('id',true);
+		$uid  					= $this->session->userdata('id');
+		$url 					='index.php/request_d2p/detail_request_d2p/';
+		$data = array(
+						 "id_tr_request" => $this->input->post('id',true),
+						  "id_t_admin" => $uid,
+						   "date" => date("Y-m-d H:i:s"),
+						    "conten" => $this->input->post('Coment',true)
+		);
+		$this->requestd2p_model->send_coment($data);
+		redirect('index.php/request_d2p/detail_request_d2p/'.$rid.'');
+		print_r($data);
+	}
 // SEND EMAIL
 	
     function email_Send($id){

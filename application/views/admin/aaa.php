@@ -38,39 +38,7 @@
     <script src="<?php echo base_url(); ?>aset/bootswatch.js"></script>
 	<script src="<?php echo base_url(); ?>aset/js/jquery/jquery-ui.js"></script>
 	
-	<script type="text/javascript">
-	// <![CDATA[
-	$(document).ready(function () {
-		$(function () {
-			$( "#kode_surat" ).autocomplete({
-				source: function(request, response) {
-					$.ajax({ 
-						url: "<?php echo site_url('index.php/admin/get_klasifikasi'); ?>",
-						data: { kode: $("#kode_surat").val()},
-						dataType: "json",
-						type: "POST",
-						success: function(data){
-							response(data);
-						}    
-					});
-				},
-			});
-		});				
-		
-		$('.datepicker').datepicker({
-			dateFormat: 'yy-mm-dd'
-		});
 
-		$(function() {
-			$( "#tgl_surat" ).datepicker({
-				changeMonth: true,
-				changeYear: true,
-				dateFormat: 'yy-mm-dd'
-			});
-		});
-	});
-	// ]]>
-	</script>
 	</head>
 	
   <body style="">
