@@ -52,6 +52,43 @@ echo $this->session->flashdata("k");
 			</table>		
 
 		</div>	
+
+		
+			<?php $bgcolor ="";
+				if ($data[0]->id_status == 8){
+					$bgColor = '"alert alert-danger"';
+					//echo $bgColor;
+				}else if($data[0]->id_status == 1){
+					$bgColor = '"alert alert-info"';
+					//echo $bgColor;
+				}else if($data[0]->id_status == 2){
+					$bgColor = '"alert alert-warning"';
+					//echo $bgColor;
+				}else if($data[0]->id_status == 3){
+					$bgColor = '"alert alert-warning"';
+					//echo $bgColor;
+				}else if($data[0]->id_status == 4){
+					$bgColor = '"alert alert-warning"';
+					//echo $bgColor;
+				}else if($data[0]->id_status == 5){
+					$bgColor = '"alert alert-success"';
+					//echo $bgColor;
+				}else if($data[0]->id_status == 6){
+					$bgColor = '"alert alert-danger"';
+					//echo $bgColor;
+				}else if($data[0]->id_status == 7){
+					$bgColor = '"alert alert-danger"';
+					//echo $bgColor;
+				}?>
+			<table>
+				<tr style = "background-color:<?php echo $bgColor ?>;"><td><b><?php echo $data[0]->status_name?></b></td></tr>	
+			</table>
+			<div class=<?php echo $bgColor?>>
+			  <strong><?php echo $data[0]->status_name?></strong>
+			</div>
+						
+		
+
 	</div>
 	<div class="row-fluid well" style="overflow: hidden">
 		<div class="container">
@@ -92,10 +129,30 @@ echo $this->session->flashdata("k");
 				<form action="<?php echo base_URL()?>index.php/request_d2p/send_coment/<?php echo $data[0]->id ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="comment">Comment:</label>
-					<input type="hidden" name="id" value="<?php echo $this->uri->segment(3); ?>"></input>
-					<textarea name="Coment" class="form-control" rows="5" id="comment"></textarea>
+					<input required type="hidden" name="id" value="<?php echo $this->uri->segment(3); ?>"></input>
+					<textarea required name="Coment" class="form-control" rows="5" id="comment"></textarea>
 					<br>
-					<button type="submit" class="btn btn-success green" style="margin-left: 94%;"><i class="fa fa-share"></i> Share</button>
+					
+					<?php if(  $this->session->userdata('admin_level') == 3 and $data[0]->id_status == 2){ ?>
+						<div class="btn-group" style="float: right important!">
+						<button  type="submit" name="approv" class="btn btn-success green"><i class="icon-ok icon-white"></i> Approval</button>
+					</div>	
+					<div class="btn-group" style="float: right  important!">
+						<button  type="submit" name="reject" class="btn btn-danger green"><i class="icon-remove-circle icon-white"></i> Reject</button>
+					</div>
+					<?php } elseif($this->session->userdata('admin_level') == 4 and $data[0]->id_status == 4){?>
+							<div class="btn-group" style="float: right important!">
+						<button  type="submit" name="approv" class="btn btn-success green"><i class="icon-ok icon-white"></i> Approval</button>
+					</div>	
+					<div class="btn-group" style="float: right  important!">
+						<button  type="submit" name="reject" class="btn btn-danger green"><i class="icon-remove-circle icon-white"></i> Reject</button>
+					</div>
+					<?php }else {?>
+						<div class="btn-group" style="float: right  important!">
+						<button  type="submit" name="coment" class="btn btn-success green"><i class="icon-comment-alt icon-white"></i> Coment</button>
+					</div>
+					<?php }?>
+					
 				</div>
 			</form>
 			</div><!-- /row -->

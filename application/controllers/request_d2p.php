@@ -137,7 +137,7 @@ class Request_d2p extends CI_Controller {
 		$data['data'] = $this->requestd2p_model->getDetailRequestById($id);
 		$data['coment']= $this->requestd2p_model->getComent($id);
 		$data['page']		= "f_requestd2p_view";
-		//echo "<pre>"; print_r($data['coment']); echo "</pre>";exit;	
+		//echo "<pre>"; print_r($data['data']); echo "</pre>";exit;	
 		$data['request'] = $this->requestd2p_model->getAllEditRequest();
 		$this->load->view('admin/aaa', $data);
 	}
@@ -243,6 +243,7 @@ class Request_d2p extends CI_Controller {
 	public function send_coment (){
 		$rid					= $this->input->post('id',true);
 		$uid  					= $this->session->userdata('id');
+		$id_role				= $this->session->userdata('admin_level');
 		$url 					='index.php/request_d2p/detail_request_d2p/';
 		$data = array(
 						 "id_tr_request" => $this->input->post('id',true),
@@ -250,7 +251,35 @@ class Request_d2p extends CI_Controller {
 						   "date" => date("Y-m-d H:i:s"),
 						    "conten" => $this->input->post('Coment',true)
 		);
-		$this->requestd2p_model->send_coment($data);
+
+		
+	    if (isset($_POST['approv'])) {
+
+	    	if($id_role == '3'){
+			$status = '4';
+			
+			
+			
+			}elseif($id_role == '4'){
+				$status = '5';
+				
+			}
+			$this->view_requestd2p_model->approval_request_d2p($rid,$status);
+			$this->requestd2p_model->send_coment($data);
+	       
+	    }
+	    elseif (isset($_POST['reject'])) {
+	        //$data = $this->requestd2p_model->getDetailRequestById($rid);
+	        $this->view_requestd2p_model->reject_request_d2p($rid,$id_role);
+	        $this->requestd2p_model->send_coment($data);
+	    }elseif (isset($_POST['coment'])) {
+	    	 $this->requestd2p_model->send_coment($data);
+	    }
+
+
+		
+		
+		
 		redirect('index.php/request_d2p/detail_request_d2p/'.$rid.'');
 		print_r($data);
 	}
