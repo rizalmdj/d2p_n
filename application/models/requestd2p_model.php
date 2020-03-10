@@ -163,6 +163,7 @@ class Requestd2p_model extends CI_Model {
             "project_manager" => $this->input->post('project_manager',true),
             "keterangan" => $this->input->post('keterangan',true),
             "req_date" => $this->input->post('req_date',true),
+            "git" => $this->input->post('git',true),
             "created_date" => date('Y-m-d H:i:s'),
             "status_req" => '1',
             "update_date" => date('Y-m-d H:i:s'),
@@ -200,6 +201,7 @@ class Requestd2p_model extends CI_Model {
             "project_manager" => $this->input->post('project_manager',true),
             "keterangan" => $this->input->post('keterangan',true),
             "req_date" => $this->input->post('req_date',true),
+            "git" => $this->input->post('git',true),
             //di hapus karena kita bisa gunakan fitue timestamp dari sql nya langsung hehehe :)
             //"update_date" => date('Y-m-d H:i:s'),
         );

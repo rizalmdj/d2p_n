@@ -59,6 +59,7 @@ class Request_d2p extends CI_Controller {
 		$this->form_validation->set_rules('project_id','project_id','trim|required');
 		$this->form_validation->set_rules('project_manager','project_manager','trim|required');
 		$this->form_validation->set_rules('req_date','req_date','trim|required');
+		$this->form_validation->set_rules('git','git','trim|required');
 		// $this->form_validation->set_rules('upload_file','upload_file','trim|required');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -68,7 +69,7 @@ class Request_d2p extends CI_Controller {
 				
 			$config['upload_path']          = './upload/';
             $config['allowed_types']        = 'xlsx|docx|jpg|png|pdf|jpeg|JPG|';
-            $config['encrypt_name']         = TRUE;                
+            //$config['encrypt_name']         = TRUE;                
 			$this->load->library('upload', $config);
 			$j = 0;
 				if($this->upload->do_upload('upload_file1')){

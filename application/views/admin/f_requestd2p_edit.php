@@ -35,6 +35,8 @@
 					<tr><td width="35%">Date  <span style="color:red;"></span></td><td><b><input type="date" name="req_date" value="<?php 
 					echo $data[0]->req_date ?>" placeholder="DD-MM-YYYY" required style="width: 400px" class="form-control"></b></td></tr>
 
+					<tr><td width="35%">Link Git <span style="color:red;">*</span></td><td><b><input type="text" name="git" value="<?php echo $data[0]->git ?>" required  style="width: 400px" class="form-control"></b></td></tr></tr>
+
 					<tr><td width="35%"><span style="color:red;"></span></td><td><b><input  type="hidden" name="id_d2p" value="<?php echo $id_d2p ?>" required  style="width: 400px" class="form-control"></b></td></tr></tr>	
 
 					

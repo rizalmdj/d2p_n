@@ -24,7 +24,9 @@
 
 			<tr><td width="35%">Project Manager <span style="color:red;">*</span></td><td><b><input type="text" name="project_manager" required  style="width: 400px" class="form-control"></b></td></tr></tr>			
 
-			<tr><td width="35%">Keterangan <span style="color:red;">*</span></td><td><b><textarea name="keterangan" required style="width: 400px; height: 85px" class="form-control"></textarea></b></td></tr>		
+			<tr><td width="35%">Keterangan <span style="color:red;">*</span></td><td><b><textarea name="keterangan" required style="width: 400px; height: 85px" class="form-control"></textarea></b></td></tr>
+
+			<tr><td width="35%">Link Git <span style="color:red;">*</span></td><td><b><input type="text" name="git"  required  style="width: 400px" class="form-control"></b></td></tr></tr>		
 
 			<tr><td width="35%">Date <span style="color:red;">*</span></td><td><b><input type="date" name="req_date" placeholder="DD-MM-YYYY" required style="width: 400px" class="form-control"></b></td></tr>		
 			

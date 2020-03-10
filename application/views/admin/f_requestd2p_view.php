@@ -30,6 +30,8 @@ echo $this->session->flashdata("k");
 
 					<tr><td width="35%">Date  <span style="color:red;">*</span></td><td><b><?php echo $data[0]->req_date ?></b></td></tr>
 
+					<tr><td width="35%">Link Git  <span style="color:red;">*</span></td><td><button class="btn btn-success" onclick=" window.open('<?php echo $data[0]->git ?>','_blank')"> GIT</button></b></td></tr>
+
 				</td></tr>
 			</table>
 
